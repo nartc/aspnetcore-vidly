@@ -11,8 +11,8 @@ using System;
 namespace aspnetcorevidly.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20171127051351_InitialModel")]
-    partial class InitialModel
+    [Migration("20171128024010_ApplyConstraints")]
+    partial class ApplyConstraints
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,7 +26,9 @@ namespace aspnetcorevidly.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255);
 
                     b.HasKey("Id");
 
@@ -40,13 +42,15 @@ namespace aspnetcorevidly.Migrations
 
                     b.Property<int>("MakeId");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255);
 
                     b.HasKey("Id");
 
                     b.HasIndex("MakeId");
 
-                    b.ToTable("Model");
+                    b.ToTable("Models");
                 });
 
             modelBuilder.Entity("aspnetcore_vidly.Models.Model", b =>
