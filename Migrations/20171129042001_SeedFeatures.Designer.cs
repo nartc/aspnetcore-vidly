@@ -11,8 +11,8 @@ using System;
 namespace aspnetcorevidly.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20171128032556_SeedFeature")]
-    partial class SeedFeature
+    [Migration("20171129042001_SeedFeatures")]
+    partial class SeedFeatures
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

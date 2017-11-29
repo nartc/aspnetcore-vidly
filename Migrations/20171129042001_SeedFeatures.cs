@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace aspnetcorevidly.Migrations
 {
-    public partial class SeedFeature : Migration
+    public partial class SeedFeatures : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,7 +15,7 @@ namespace aspnetcorevidly.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.Sql("DELETE FROM Features WHERE Name IN ('Feature 1', 'Feature 2', 'Feature 3')");
+            migrationBuilder.Sql("REMOVE FROM Features WHERE Name IN ('Feature 1', 'Feature 2', 'Feature 3')");
         }
     }
 }
