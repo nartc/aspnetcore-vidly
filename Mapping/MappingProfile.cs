@@ -10,6 +10,25 @@ namespace aspnetcore_vidly.Mapping {
             CreateMap < Make, MakeResource > ();
             CreateMap < Model, ModelResource > ();
             CreateMap < Feature, FeatureResource > ();
+            CreateMap < Vehicle, VehicleResource > ()
+                .ForMember(
+                    vehicle => vehicle.Contact,
+                    operation => operation.MapFrom(
+                        vehicle => new ContactResource {
+                            Name = vehicle.ContactName,
+                            Phone = vehicle.ContactPhone,
+                            Email = vehicle.ContactEmail
+                        }
+                    )
+                )
+                .ForMember(
+                    vehicle => vehicle.Features,
+                    operation => operation.MapFrom(
+                        vehicle => vehicle.Features.Select(
+                            vehicleFeature => vehicleFeature.FeatureId
+                        )
+                    )
+                );
 
             // API Resource to Domain
             CreateMap < VehicleResource, Vehicle > ()
